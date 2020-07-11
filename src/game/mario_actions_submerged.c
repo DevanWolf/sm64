@@ -748,14 +748,8 @@ static s32 act_water_shell_swimming(struct MarioState *m) {
     }
 
     if (m->input & INPUT_B_PRESSED) {
-        return set_mario_action(m, ACT_WATER_THROW, 0);
-    }
-
-    if (m->actionTimer++ == 240) {
-        m->heldObj->oInteractStatus = INT_STATUS_STOP_RIDING;
-        m->heldObj = NULL;
         stop_shell_music();
-        set_mario_action(m, ACT_FLUTTER_KICK, 0);
+        return set_mario_action(m, ACT_WATER_THROW, 0);
     }
 
     m->forwardVel = approach_f32(m->forwardVel, 30.0f, 2.0f, 1.0f);
